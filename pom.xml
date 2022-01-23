@@ -62,7 +62,16 @@
             <artifactId>java-jwt</artifactId>
             <version>3.18.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -81,5 +90,14 @@
             </plugin>
         </plugins>
     </build>
-
+<distributionManagement>
+<snapshotRepository>
+<id>nexus-snapshots</id>
+<url>http://localhost:8081/repository/maven-snapshots</url>
+</snapshotRepository>
+<repository>
+<id>nexus-releases</id>
+<url>http://localhost:8081/repository/maven-releases</url>
+</repository>
+</distributionManagement>
 </project>

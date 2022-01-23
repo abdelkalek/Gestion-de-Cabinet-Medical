@@ -10,11 +10,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import java.util.ArrayList;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.ArrayList;
+@EnableJpaAuditing
 @SpringBootApplication
+@EnableSwagger2
 public class SpringsecurityJwtApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringsecurityJwtApplication.class, args);
@@ -29,9 +36,9 @@ public class SpringsecurityJwtApplication {
        userService.saveRole(new Role(null, "ROLE_PATIENT"));
             userService.saveRole(new Role(null, "ROLE_SECRETAIRE"));
             userService.saveRole(new Role(null, "ROLE_MEDECIN"));
-        userService.saveUser(new User(null, "Sandor Clegane", "Sandor", "0123",new ArrayList<>()));
-            userService.saveUser(new User(null, "Sansa Stark", "Sansa", "0123", new ArrayList<>()));
-            userService.saveUser(new User(null, "Jon  Stark", "Jon", "1234", new ArrayList<>()));
+        userService.saveUser(new User( "Sandor Clegane", "Sandor", "0123",new ArrayList<>()));
+            userService.saveUser(new User("Sansa Stark", "Sansa", "0123", new ArrayList<>()));
+            userService.saveUser(new User("Jon  Stark", "Jon", "1234", new ArrayList<>()));
             userService.addRoleToUser("Jon", "ROLE_MEDECIN");
                 userService.addRoleToUser("Sansa", "ROLE_SECRETAIRE");
             userService.addRoleToUser("Sandor", "ROLE_PATIENT");
@@ -42,5 +49,9 @@ public class SpringsecurityJwtApplication {
         };
 
     }
-
+    @Bean
+    public Docket productApi() {
+        return new Docket(DocumentationType.SWAGGER_2).select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.GestionCabinetMedical")).build();
+    }
 }

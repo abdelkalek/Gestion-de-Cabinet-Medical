@@ -4,6 +4,7 @@ import com.example.GestionCabinetMedical.entity.Role;
 import com.example.GestionCabinetMedical.entity.User;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface IUserService {
     User saveUser(User user);

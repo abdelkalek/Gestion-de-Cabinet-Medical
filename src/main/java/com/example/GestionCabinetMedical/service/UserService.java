@@ -1,5 +1,4 @@
 package com.example.GestionCabinetMedical.service;
-
 import com.example.GestionCabinetMedical.entity.Role;
 import com.example.GestionCabinetMedical.entity.User;
 import com.example.GestionCabinetMedical.repository.RoleRepositroy;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -15,11 +15,11 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @DynamicUpdate
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@GenericGenerator(name = "system-uuid", strategy = "uuid")
-    private Long id;
+public class User extends AbstractEntity {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    //@GenericGenerator(name = "system-uuid", strategy = "uuid")
+//    private Long id;
     private String name;
     @Column(unique = true,updatable = true)
     private String username;
@@ -32,8 +32,7 @@ public class User {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY)
     private Set<Consultation> consultationSet;
-    public User(Long id, String name, String username, String password, Collection<Role> roles) {
-        this.id = id;
+    public User( String name, String username, String password, Collection<Role> roles) {
         this.name = name;
         this.username = username;
         this.password = password;
