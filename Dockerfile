@@ -1,6 +1,6 @@
 FROM openjdk:11
 
-COPY target/cabinetmedical-0.0.1-SNAPSHOT.jar app.jar
+COPY Gestion-de-Cabinet-Medical/target/cabinetmedical-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
